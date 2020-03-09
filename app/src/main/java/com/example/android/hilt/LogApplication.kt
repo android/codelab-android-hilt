@@ -17,13 +17,9 @@
 package com.example.android.hilt
 
 import android.app.Application
+import dagger.hilt.GenerateComponents
+import dagger.hilt.android.AndroidEntryPoint
 
-class LogApplication : Application() {
-
-    lateinit var serviceLocator: ServiceLocator
-
-    override fun onCreate() {
-        super.onCreate()
-        serviceLocator = ServiceLocator(applicationContext)
-    }
-}
+@GenerateComponents
+@AndroidEntryPoint
+class LogApplication : Application()

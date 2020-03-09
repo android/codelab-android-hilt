@@ -14,22 +14,19 @@
  * limitations under the License.
  */
 
-package com.example.android.hilt.util
+package com.example.android.hilt.di
 
-import android.annotation.SuppressLint
-import java.text.SimpleDateFormat
-import java.util.Date
-import javax.inject.Inject
+import com.example.android.hilt.navigator.AppNavigator
+import com.example.android.hilt.navigator.AppNavigatorImpl
+import dagger.Binds
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
 
-/**
- * String formatter for the log dates.
- */
-class DateFormatter @Inject constructor() {
+@InstallIn(ActivityComponent::class)
+@Module
+abstract class NavigationModule {
 
-    @SuppressLint("SimpleDateFormat")
-    private val formatter = SimpleDateFormat("d MMM yyyy HH:mm:ss")
-
-    fun formatDate(timestamp: Long): String {
-        return formatter.format(Date(timestamp))
-    }
+    @Binds
+    abstract fun bindNavigator(impl: AppNavigatorImpl): AppNavigator
 }
