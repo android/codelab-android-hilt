@@ -21,4 +21,6 @@
     <string name="button_3">Button 3</string>
     <string name="see_all_logs">SEE ALL LOGS</string>
     <string name="delete_logs">Delete Logs</string>
+
+    <string name="content_authority">com.example.android.hilt.provider</string>
 </resources>

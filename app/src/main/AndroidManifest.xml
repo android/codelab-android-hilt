@@ -35,5 +35,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <provider
+            android:authorities="@string/content_authority"
+            android:name=".contentprovider.LogsContentProvider"
+            android:exported="true"/>
     </application>
 </manifest>

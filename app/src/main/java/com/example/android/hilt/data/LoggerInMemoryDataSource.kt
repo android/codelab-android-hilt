@@ -16,29 +16,22 @@
 
 package com.example.android.hilt.data
 
-import android.database.Cursor
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
+import java.util.LinkedList
+import javax.inject.Inject
 
-/**
- * Data access object to query the database.
- */
-@Dao
-interface LogDao {
+class LoggerInMemoryDataSource @Inject constructor() : LoggerDataSource {
 
-    @Query("SELECT * FROM logs ORDER BY id DESC")
-    fun getAll(): List<Log>
+    private val logs = LinkedList<Log>()
 
-    @Insert
-    fun insertAll(vararg logs: Log)
+    override fun addLog(msg: String) {
+        logs.addFirst(Log(msg, System.currentTimeMillis()))
+    }
 
-    @Query("DELETE FROM logs")
-    fun nukeTable()
+    override fun getAllLogs(callback: (List<Log>) -> Unit) {
+        callback(logs)
+    }
 
-    @Query("SELECT * FROM logs ORDER BY id DESC")
-    fun selectAllLogsCursor(): Cursor
-
-    @Query("SELECT * FROM logs WHERE id = :id")
-    fun selectLogById(id: Long): Cursor?
+    override fun removeLogs() {
+        logs.clear()
+    }
 }
