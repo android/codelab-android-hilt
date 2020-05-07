@@ -18,6 +18,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion 29
@@ -56,4 +57,12 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit-ktx:1.1.1"
     androidTestImplementation "androidx.test:rules:1.2.0"
     androidTestImplementation "androidx.test.espresso:espresso-core:3.2.0"
+
+    // Dagger dependencies (temporary)
+    implementation 'com.google.dagger:dagger:2.27'
+    kapt 'com.google.dagger:dagger-compiler:2.27'
+
+    // Hilt dependencies
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
 }
