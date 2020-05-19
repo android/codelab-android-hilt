@@ -17,9 +17,7 @@
 package com.example.android.hilt
 
 import android.app.Application
-import dagger.hilt.GenerateComponents
-import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.HiltAndroidApp
 
-@GenerateComponents
-@AndroidEntryPoint
+@HiltAndroidApp
 class LogApplication : Application()

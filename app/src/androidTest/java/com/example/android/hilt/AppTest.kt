@@ -24,40 +24,20 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.android.hilt.data.LoggerDataSource
-import com.example.android.hilt.di.DatabaseLogger
 import com.example.android.hilt.ui.MainActivity
-import dagger.hilt.GenerateComponents
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.hamcrest.Matchers.containsString
-import org.junit.After
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import javax.inject.Inject
 
 @RunWith(AndroidJUnit4::class)
-@GenerateComponents
 @HiltAndroidTest
 class AppTest {
 
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
-
-    @DatabaseLogger
-    @Inject lateinit var logger: LoggerDataSource
-
-    @Before
-    fun init() {
-        hiltRule.inject()
-    }
-
-    @After
-    fun tearDown() {
-        logger.removeLogs()
-    }
 
     @Test
     fun happyPath() {
