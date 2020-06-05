@@ -27,6 +27,7 @@ import com.example.android.hilt.data.LogDao
 import dagger.hilt.EntryPoint
 import dagger.hilt.EntryPoints
 import dagger.hilt.InstallIn
+import dagger.hilt.android.EntryPointAccessors
 import dagger.hilt.android.components.ApplicationComponent
 import java.lang.UnsupportedOperationException
 
@@ -95,7 +96,10 @@ class LogsContentProvider: ContentProvider() {
      * Gets a LogDao instance provided by Hilt using the @EntryPoint annotated interface.
      */
     private fun getLogDao(appContext: Context): LogDao {
-        val hiltEntryPoint = EntryPoints.get(appContext, LogsContentProviderEntryPoint::class.java)
+        val hiltEntryPoint = EntryPointAccessors.fromApplication(
+            appContext,
+            LogsContentProviderEntryPoint::class.java
+        )
         return hiltEntryPoint.logDao()
     }
 
