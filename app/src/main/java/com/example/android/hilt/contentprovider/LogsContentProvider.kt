@@ -25,10 +25,9 @@ import android.database.Cursor
 import android.net.Uri
 import com.example.android.hilt.data.LogDao
 import dagger.hilt.EntryPoint
-import dagger.hilt.EntryPoints
 import dagger.hilt.InstallIn
 import dagger.hilt.android.EntryPointAccessors
-import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.components.SingletonComponent
 import java.lang.UnsupportedOperationException
 
 /** The authority of this content provider.  */
@@ -48,7 +47,7 @@ private const val CODE_LOGS_ITEM = 2
  */
 class LogsContentProvider: ContentProvider() {
 
-    @InstallIn(ApplicationComponent::class)
+    @InstallIn(SingletonComponent::class)
     @EntryPoint
     interface LogsContentProviderEntryPoint {
         fun logDao(): LogDao
