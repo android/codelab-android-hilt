@@ -56,7 +56,7 @@ class ButtonsFragment : Fragment() {
             serviceLocator.loggerLocalDataSource
 
         navigator = (context.applicationContext as LogApplication).
-            serviceLocator.provideNavigator(activity!!)
+            serviceLocator.provideNavigator(requireActivity())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
