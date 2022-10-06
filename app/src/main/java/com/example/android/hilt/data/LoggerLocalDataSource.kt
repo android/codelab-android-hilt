@@ -52,7 +52,7 @@ class LoggerLocalDataSource @Inject constructor(private val logDao: LogDao) : Lo
 
     override fun removeLogs() {
         executorService.execute {
-            logDao.nukeTable()
+            logDao.deleteLogs()
         }
     }
 }

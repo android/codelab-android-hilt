@@ -34,7 +34,7 @@ interface LogDao {
     fun insertAll(vararg logs: Log)
 
     @Query("DELETE FROM logs")
-    fun nukeTable()
+    fun deleteLogs()
 
     @Query("SELECT * FROM logs ORDER BY id DESC")
     fun selectAllLogsCursor(): Cursor
